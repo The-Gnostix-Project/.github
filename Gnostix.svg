@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="a" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 522 580">
+  <defs>
+    <clipPath id="b">
+      <path d="m229.126,13.954L37.874,124.373c-19.724,11.388-31.874,32.433-31.874,55.208v220.839c0,22.775,12.15,43.82,31.874,55.208l191.252,110.419c19.724,11.388,44.024,11.388,63.748,0l191.252-110.419c19.724-11.388,31.874-32.433,31.874-55.208v-220.839c0-22.775-12.15-43.82-31.874-55.208L292.874,13.954c-19.724-11.388-44.024-11.388-63.748,0Z" style="fill: none;"/>
+    </clipPath>
+    <linearGradient id="black"  x1="253.029" y1="-238.531" x2="253.029" y2="818.294" gradientUnits="userSpaceOnUse">
+      <stop offset=".275" stop-color="#212529"/>
+      <stop offset=".5" stop-color="#343a40"/>
+      <stop offset=".725" stop-color="#495057"/>
+    </linearGradient>
+    <linearGradient id="gray" x1="722.456" y1="547.866" x2="-192.781" y2="19.454" gradientUnits="userSpaceOnUse">
+      <stop offset=".275" stop-color="#868e96"/>
+      <stop offset=".5" stop-color="#adb5bd"/>
+      <stop offset=".725" stop-color="#ced4da"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="-192.736" y1="561.317" x2="722.502" y2="32.905" gradientUnits="userSpaceOnUse">
+      <stop offset=".275" stop-color="#002480"/>
+      <stop offset=".5" stop-color="#002fa7"/>
+      <stop offset=".725" stop-color="#0048ff"/>
+    </linearGradient>
+    <style>
+      #group path {
+        fill: none;
+        fill-rule: evenodd;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 256px;
+      }
+      #blackLine {
+        stroke: url(#black);
+      }
+      #grayLine {
+        stroke: url(#gray);
+      }
+      #blueLine {
+        stroke: url(#blue);
+      }
+    </style>
+  </defs>
+  <g id="group" style="clip-path: url(#b);">
+    <path id="blackLine" d="m372.956-88.885c-106.67-61.533-239.956,15.453-239.956,138.598v480.338c0,123.198,133.389,200.177,240.058,138.539"/>
+    <path id="grayLine" d="m532.896,576.903c106.624-61.612,106.596-215.534-.051-277.107L116.86,59.627C10.167-1.972-123.193,75.057-123.148,198.255"/>
+    <path id="blueLine" d="m-123.102,382.635c.046,123.145,133.36,200.081,240.007,138.509l415.985-240.169c106.693-61.599,106.664-215.606-.051-277.166"/>
+  </g>
+    <script>
+    (()=>{
+      'use strict';
+      const group = document.getElementById("group");
+      const black = document.getElementById("blackLine");
+      const gray = document.getElementById("grayLine");
+      const blue = document.getElementById("blueLine");
+      function getTotal() {
+        let b = 0, nodeList = group.children;
+        nodeList = Array.from(nodeList).map(e => e.getTotalLength());
+        for (let a of nodeList) b += a;
+        return b;
+      }
+      function update(length = null, offset = 0, total = getTotal()) {
+        const delay = 615;
+        if(length === null) length = total;
+        offset %= total;
+        let pathA = length + offset;
+        let pathB = length - delay + offset;
+        let pathC = length - delay * 2 + offset;
+        let pathAoffset = offset;
+        let pathBoffset = offset - delay;
+        let pathCoffset = offset - delay * 2;
+        let pathA2 = Math.max(0, pathC - delay);
+        pathAoffset = Math.max(0, pathAoffset - pathA2);
+        let pathB2 = Math.max(0, pathA2 - delay);
+        pathBoffset = Math.max(0, pathBoffset - pathB2);
+        let pathC2 = Math.max(0, pathB2 - delay);
+        pathCoffset = Math.max(0, pathCoffset - pathC2);
+        pathA = Math.max(0, pathA);
+        pathB = Math.max(0, pathB);
+        pathC = Math.max(0, pathC);
+        blue.style = `stroke-dasharray:${pathA2} ${pathAoffset} ${pathA} ${total}`;
+        gray.style = `stroke-dasharray:${pathB2} ${pathBoffset} ${pathB} ${total}`;
+        black.style = `stroke-dasharray:${pathC2} ${pathCoffset} ${pathC} ${total}`;
+      }
+      window.update = update;
+    })()
+    let time = 0;
+    const id = setInterval(()=>{
+      if(time > 4000) clearInterval(id);
+      else update(time += 7.5);
+    },1);
+    </script>
+</svg>
