@@ -17,5 +17,7 @@
 Gnostix 是一个面向学生和老师的信息整合软件开与发与维护此软件的同名组织所共有的名称。
 
 `The Gnostix Project` Github 团队账号主要用于存放第三方扩展开发所需的脚手架/实例代码及其他信息。
-· ·
+
 英文版主页将在团队账号建设完毕后添加。
+
+The English version of the homepage will be added after the team account construction has completed.
