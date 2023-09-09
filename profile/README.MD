@@ -1,10 +1,5 @@
 # The Gnostix Project
 
-<style>
-div .title{
-
-}
-</style>
 <img
   alt="Gnostix Logo"
   style="
@@ -14,29 +9,28 @@ div .title{
   "
   src="../Gnostix.svg"
 />
-<div
-  style="margin-bottom: 2em;"
+<p
+  style="
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+  "
 >
-  <div
-    style="
-      width: 100%;
-      font-size: 2rem;
-      text-align: center;
-      font-weight: bold;
-    "
-  >
-    学术集成
-  </div>
-  <div
-    style="
-      width: 100%;
-      font-size: 2rem;
-      text-align: center;
-      font-weight: bold;
-    ">
-    Academic, integrated
-  </div>
-</div>
+  学术集成
+</p>
+<p
+  style="
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: bold;
+  ">
+  Academic, integrated
+</p>
+<p
+  style="margin-bottom: 2em;"
+></p>
 
 Gnostix 是一个面向学生和老师的信息整合软件开与发与维护此软件的同名组织所共有的名称。
 
